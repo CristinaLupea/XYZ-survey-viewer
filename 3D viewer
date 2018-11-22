@@ -1,0 +1,49 @@
+"""
+Created on Wed Nov 21 11:55:49 2018
+
+@author: LPA
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.mlab as ml
+
+data =np.loadtxt('scipy.txt')
+
+#print(data)
+
+a = [data[:,0]]
+b = [data[:,1]]
+n = [data[:,2]]
+
+x = np.asanyarray(a, dtype=np.float64,order='C')
+y = np.asanyarray(b, dtype=np.float64,order='C')
+z = np.asanyarray(n, dtype=np.float64,order='C')
+print(x.shape, y.shape, z.shape)
+
+#making sure they are 1-D arrays
+x1 = np.reshape(x, (-1,))
+y1 = np.reshape(y, (-1,))
+z1 = np.reshape(z, (-1,))
+
+print(x1.shape, y1.shape, z1.shape)
+
+
+# Make the plot
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+ax.plot_trisurf(x1, y1, z1 , cmap=plt.cm.viridis, linewidth=0.2)
+plt.show()
+ 
+# to Add a color bar which maps values to colors.
+surf=ax.plot_trisurf(x1, y1, z1, cmap=plt.cm.viridis, linewidth=0.2)
+fig.colorbar( surf, shrink=0.5, aspect=10)
+plt.show()
+ 
+# Rotate it
+ax.view_init(30, 45)
+plt.show()
+ 
+# Other palette
+ax.plot_trisurf(x1, y1, z1, cmap=plt.cm.jet, linewidth=0.01)
+plt.show()
