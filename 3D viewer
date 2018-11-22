@@ -8,7 +8,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as ml
 
-data =np.loadtxt('scipy.txt')
+# inputXYZ.txt is the XYZ data file you would like to plot, data should include X Y Z coordinates separated by space " " 
+data =np.loadtxt('inputXYZ.txt')
 
 #print(data)
 
@@ -21,7 +22,7 @@ y = np.asanyarray(b, dtype=np.float64,order='C')
 z = np.asanyarray(n, dtype=np.float64,order='C')
 print(x.shape, y.shape, z.shape)
 
-#making sure they are 1-D arrays
+# Making sure they are 1-D arrays
 x1 = np.reshape(x, (-1,))
 y1 = np.reshape(y, (-1,))
 z1 = np.reshape(z, (-1,))
